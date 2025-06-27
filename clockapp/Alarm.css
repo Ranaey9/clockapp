@@ -1,0 +1,115 @@
+  body{
+    background-color: rgb(245, 246, 246);
+  }
+  h3{
+    text-align: center;
+    font-size: 40px;
+  }
+.arti-btn {
+ position: fixed;
+  bottom: 540px;
+  right: 50px;
+  color: black;
+  background: none;
+  border: none;
+  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;/*el işaretine (pointer) dönüşmesini sağlar.*/
+}
+.uc-nokta {
+ position: fixed;
+  bottom: 540px;
+  right: 0px;
+  color: black;
+  background: none;
+  border: none;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+ body{
+ font-family: Arial,sans-serif;
+ text-align: center;
+ margin-top: 100px;
+ font-size: 48px;
+    }
+    .altmenu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color:rgb(245, 246, 246);
+  border-top: 1px solid #ffffff;
+  padding: 10px 0;
+}
+
+.altmenu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;           /* Yan yana yapmak için */
+  justify-content: space-around;  /* Eşit aralık bırak */
+  align-items: center;
+}
+
+.altmenu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+.altmenu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 10px;
+  position: relative;  /* alt çizgi için gerekli */
+}
+
+.altmenu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-bottom: 2px solid transparent; /* başlangıçta çizgi görünmez */
+  transition: border-color 0.3s ease;
+}
+
+.altmenu ul li a:hover {
+  border-bottom-color: black; /* hover olunca siyah çizgi görünür */
+}
+
+.ucnokta-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background-color: white;
+  border: 1px solid #ebeaea;
+  border-radius: 10px;
+  display: none;
+  flex-direction: column;
+  width: 240px;
+  box-shadow: 0 4px 20px rgba(109, 108, 108, 0.15);
+}
+
+.ucnokta-menu a {
+  display: block;              /* Tam satır kaplasın */
+  text-align: left;            /* Yazı sola hizalansın */
+  padding: 17px 18px;
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+}
+
+.ucnokta-menu a:hover {
+  background-color: #f5f5f5;
+}
+
+.ucnokta-menu a:last-child {
+  border-bottom: none;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saat</title>
+  <link rel="stylesheet" href="Alarm.css" />
+</head>
+<body>
+
+  <h3>Tüm alarmlar Kapalı</h3>
+
+  <div class="arti-container">
+    <button class="arti-btn" onclick="alarmkurma()">+</button>
+
+    <!-- Menü buraya yüklenecek -->
+    <div id="menuContainer"></div>
+  </div>
+
+  <div class="altmenu">
+    <ul>
+      <li><a href="./Alarm.html">Alarm</a></li>
+      <li><a href="./DunyaSaati.html">Dünya Saati</a></li>
+      <li><a href="./Kronometre.html">Kronometre</a></li>
+      <li><a href="./Zamanlayici.html">Zamanlayıcı</a></li>
+    </ul>
+  </div>
+<!-- Alarm.html içine direk şunu eklersin -->
+<button class="uc-nokta" onclick="menüucnokta()">⋮</button>
+<div id="ucnoktaMenu" class="ucnokta-menu" style="display: none;">
+  <a href="menu1/uyku.html">Uyku Modu</a>
+  <a href="menu1/duzenle.html">Düzenle</a>
+  <a href="menu1/sirala.html">Sırala</a>
+</div>
+<script src="menu1/menu.js"></script>
+</body>
+</html>

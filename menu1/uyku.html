@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Uyku Modu</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      color: #333;
+    }
+
+    .saatler {
+      font-size: 28px;
+      color: #555;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .saatler svg {
+      stroke: #555;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      width: 90px;  /* büyük saat */
+      height: 120px;
+      cursor: default;
+    }
+
+    .description {
+      max-width: 500px;
+      font-size: 16px;
+      color: #444;
+      margin: 20px;
+      line-height: 1.4;
+    }
+
+    button {
+      margin: 8px;
+      padding: 16px 38px;
+      background-color: #316BFF;
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 82px rgba(49,107,255,0.4);
+    margin: 24px 48px 38px 48px; /* Üst boşluk artırıldı */
+
+    }
+
+    button:hover {
+      background-color: #254fd1;
+      box-shadow: 0 8px 15px rgba(37,79,209,0.6);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 12px;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="saatler" aria-label="Saat ikonu">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" stroke="#555" stroke-width="2" fill="none"/>
+      <line x1="12" y1="6" x2="12" y2="12" stroke="#555" stroke-width="2" />
+      <line x1="12" y1="12" x2="16" y2="14" stroke="#555" stroke-width="2" />
+    </svg>
+  </div>
+<img src="yatak.svg" alt="">
+  <div class="description">
+    Rahat bir uyku ortamı hazırlayın. Uyku modu sayesinde daha kaliteli ve zamanında bir uyku alışkanlığı elde edin.
+  </div>
+
+  <button onclick="uykuBaslat()">Başlat</button>
+
+  <div class="footer">© Uyku Modu</div>
+</body>
+</html>

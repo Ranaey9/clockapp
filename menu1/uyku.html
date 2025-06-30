@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Uyku Modu</title>
   <style>
+    /* GENEL STİL */
     body {
       margin: 0;
       padding: 0;
-      background-color: #f0f0f0;
       font-family: 'Segoe UI', sans-serif;
       display: flex;
       flex-direction: column;
@@ -17,37 +17,95 @@
       height: 100vh;
       text-align: center;
       color: #333;
+      background: #f0f0f0;
+      transition: background-color 1.5s ease, color 1s ease;
+      overflow: hidden;
     }
 
+    /* UYKU MODU TEMA */
+    body.uyku {
+      background: linear-gradient(#000010, #02020a);
+      color: rgb(44, 47, 203);
+    }
+
+    body.uyku button {
+      background-color:rgb(44, 47, 203);
+      color: #000;
+      box-shadow: 0 0 18px rgb(44, 47, 203);
+    }
+
+    body.uyku .description,
+    body.uyku .footer {
+      color: rgb(44, 47, 203);
+    }
+
+    body.uyku svg {
+      stroke: rgb(44, 47, 203);
+    }
+
+    /* YILDIZLAR */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      display: none;
+    }
+
+    body.uyku .stars {
+      display: block;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: moveStar linear infinite;
+    }
+
+    @keyframes moveStar {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* İÇERİK STİLLERİ */
     .saatler {
       font-size: 28px;
-      color: #555;
       margin-bottom: 25px;
-      display: flex;
-      justify-content: center;
+      z-index: 1;
     }
 
     .saatler svg {
       stroke: #555;
       stroke-width: 2;
       fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      width: 90px;  /* büyük saat */
+      width: 90px;
       height: 120px;
-      cursor: default;
+      z-index: 1;
     }
 
     .description {
       max-width: 500px;
       font-size: 16px;
-      color: #444;
       margin: 20px;
       line-height: 1.4;
+      color: #444;
+      z-index: 1;
     }
 
     button {
-      margin: 8px;
       padding: 16px 38px;
       background-color: #316BFF;
       border: none;
@@ -55,15 +113,9 @@
       color: white;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.4s ease;
       box-shadow: 0 6px 82px rgba(49,107,255,0.4);
-    margin: 24px 48px 38px 48px; /* Üst boşluk artırıldı */
-
-    }
-
-    button:hover {
-      background-color: #254fd1;
-      box-shadow: 0 8px 15px rgba(37,79,209,0.6);
+      z-index: 1;
     }
 
     .footer {
@@ -71,25 +123,32 @@
       bottom: 15px;
       font-size: 12px;
       color: #999;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
 
+  <!-- YILDIZ ALANI -->
+  <div class="stars" id="stars"></div>
+
   <div class="saatler" aria-label="Saat ikonu">
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="10" stroke="#555" stroke-width="2" fill="none"/>
-      <line x1="12" y1="6" x2="12" y2="12" stroke="#555" stroke-width="2" />
-      <line x1="12" y1="12" x2="16" y2="14" stroke="#555" stroke-width="2" />
+      <circle cx="12" cy="12" r="10"/>
+      <line x1="12" y1="6" x2="12" y2="12"/>
+      <line x1="12" y1="12" x2="16" y2="14"/>
     </svg>
   </div>
-<img src="yatak.svg" alt="">
+
+  <img src="yatak.svg" alt="yatak" height="50" />
+
   <div class="description">
     Rahat bir uyku ortamı hazırlayın. Uyku modu sayesinde daha kaliteli ve zamanında bir uyku alışkanlığı elde edin.
   </div>
 
-  <button onclick="uykuBaslat()">Başlat</button>
+<button onclick="uykuModuDegistir()">Başlat</button>
 
   <div class="footer">© Uyku Modu</div>
+<script src="uyku.js"></script>
 </body>
 </html>

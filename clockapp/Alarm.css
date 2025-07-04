@@ -1,24 +1,24 @@
-   body{
-    background-color: rgb(245, 246, 246);
-  }
-  h3{
-    text-align: center;
-    font-size: 40px;
-  }
+  body {
+  background-color: rgb(245, 246, 246);
+}
+h3 {
+  text-align: center;
+  font-size: 40px;
+}
 .arti-btn {
- position: fixed;
+  position: fixed;
   bottom: 540px;
   right: 50px;
   color: black;
   background: none;
   border: none;
-  font-size: 40px;
+  font-size: 35px;
   width: 60px;
   height: 60px;
-  cursor: pointer;/*el işaretine (pointer) dönüşmesini sağlar.*/
+  cursor: pointer; /*el işaretine (pointer) dönüşmesini sağlar.*/
 }
 .uc-nokta {
- position: fixed;
+  position: fixed;
   bottom: 540px;
   right: 0px;
   color: black;
@@ -29,28 +29,33 @@
   height: 60px;
   cursor: pointer;
 }
- body{
- font-family: Arial,sans-serif;
- text-align: center;
- margin-top: 100px;
- font-size: 48px;
-    }
-    .altmenu {
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 48px;
+}
+.altmenu {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color:rgb(245, 246, 246);
+  background-color: rgb(245, 246, 246);
   border-top: 1px solid #ffffff;
   padding: 10px 0;
+  overflow-x: auto; /* 🔸 Yana kaydırmayı aktif et */
+  white-space: nowrap; /* 🔸 Tüm menüyü tek satırda tut */
+  z-index: 10;
 }
 
 .altmenu ul {
   margin: 0;
-  padding: 0;
+  padding: 0 10px; /* Sağ ve soldan boşluk */
   list-style: none;
-  display: flex;           /* Yan yana yapmak için */
-  justify-content: space-around;  /* Eşit aralık bırak */
+  display: inline-flex; /* 🔸 Satırda kalması için inline-flex */
+  justify-content: flex-start;
   align-items: center;
+  gap: 30px; /* Butonlar arasında boşluk */
+  min-width: max-content; /* 🔸 Scroll için genişliği sabitle */
 }
 
 .altmenu ul li a {
@@ -67,7 +72,7 @@
   font-weight: bold;
   font-size: 16px;
   padding: 5px 10px;
-  position: relative;  /* alt çizgi için gerekli */
+  position: relative; /* alt çizgi için gerekli */
 }
 
 .altmenu ul li a {
@@ -98,8 +103,8 @@
 }
 
 .ucnokta-menu a {
-  display: block;              /* Tam satır kaplasın */
-  text-align: left;            /* Yazı sola hizalansın */
+  display: block; /* Tam satır kaplasın */
+  text-align: left; /* Yazı sola hizalansın */
   padding: 17px 18px;
   text-decoration: none;
   color: #333;

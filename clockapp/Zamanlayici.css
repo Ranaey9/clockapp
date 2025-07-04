@@ -1,36 +1,40 @@
-   body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      font-size: 48px;
-     background-color:rgb(245, 246, 246);
-    }
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 100px;
+  font-size: 48px;
+  background-color: rgb(245, 246, 246);
+}
 
-    .etiketler {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      color: #999;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .altmenu {
+.etiketler {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.altmenu {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color:rgb(245, 246, 246);
+  background-color: rgb(245, 246, 246);
   border-top: 1px solid #ffffff;
   padding: 10px 0;
+  overflow-x: auto; /* 🔸 Yana kaydırmayı aktif et */
+  white-space: nowrap; /* 🔸 Tüm menüyü tek satırda tut */
+  z-index: 10;
 }
 
 .altmenu ul {
   margin: 0;
-  padding: 0;
+  padding: 0 10px; /* Sağ ve soldan boşluk */
   list-style: none;
-  display: flex;           /* Yan yana yapmak için */
-  justify-content: space-around;  /* Eşit aralık bırak */
+  display: inline-flex; /* 🔸 Satırda kalması için inline-flex */
+  justify-content: flex-start;
   align-items: center;
+  gap: 30px; /* Butonlar arasında boşluk */
+  min-width: max-content; /* 🔸 Scroll için genişliği sabitle */
 }
 
 .altmenu ul li a {
@@ -47,7 +51,7 @@
   font-weight: bold;
   font-size: 16px;
   padding: 5px 10px;
-  position: relative;  /* alt çizgi için gerekli */
+  position: relative; /* alt çizgi için gerekli */
 }
 
 .altmenu ul li a {
@@ -64,7 +68,7 @@
   border-bottom-color: black; /* hover olunca siyah çizgi görünür */
 }
 .uc-nokta {
- position: fixed;
+  position: fixed;
   bottom: 740px;
   right: 0px;
   color: black;
@@ -76,31 +80,31 @@
   cursor: pointer;
 }
 
-    .kutu {
-      gap: 10px;
-      margin-top: 400px;
-    }
+.kutu {
+  gap: 10px;
+  margin-top: 400px;
+}
 
-    .kutu button {
-      padding: 15px 50px;
-      font-size: 18px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: background-color 0.4s, transform 0.2s;
-    }
+.kutu button {
+  padding: 15px 50px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.4s, transform 0.2s;
+}
 
-    .baslat-btn.pasif {
-      background-color: #a9bacd;
-      color: #ffffff;
-      cursor: not-allowed;
-    }
+.baslat-btn.pasif {
+  background-color: #a9bacd;
+  color: #ffffff;
+  cursor: not-allowed;
+}
 
-    .baslat-btn.aktif {
-      background-color: #007bff;
-      color: white;
-    }
+.baslat-btn.aktif {
+  background-color: #007bff;
+  color: white;
+}
 
-    .kutu button:hover {
-      transform: scale(1.05);
-    }
+.kutu button:hover {
+  transform: scale(1.05);
+}

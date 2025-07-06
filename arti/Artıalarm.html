@@ -1,0 +1,126 @@
+<!-- <!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artıalarm</title>
+  <link rel="stylesheet" href="Artıalarm.css" />
+</head>
+<body>
+
+<div class="alarm-ekle-container">
+  <div class="saat-scroll">
+    <input type="time" id="alarmSaat" value="07:00" />
+  </div>
+
+  <div class="gunler">
+    <label><input type="checkbox" value="Pzt" /> P</label>
+    <label><input type="checkbox" value="Sal" /> S</label>
+    <label><input type="checkbox" value="Çar" /> Ç</label>
+    <label><input type="checkbox" value="Per" /> P</label>
+    <label><input type="checkbox" value="Cum" /> C</label>
+    <label><input type="checkbox" value="Cts"  oclo/> C</label>
+    <label><input type="checkbox" value="Paz" /> P</label>
+  </div>
+
+<div class="alarm-form">
+  <div class="alarm-item no-box">
+    <input type="text" placeholder="Alarm adı" class="alt-cizgili-input" />
+  </div>
+
+ <div class="alarm-item with-line">
+  <div class="text-group">
+<a href="Alarm_sesi.html" class="alarm-link">Alarm Sesi</a>
+    <h6 class="alt-yazi">Homecoming</h6>
+  </div>
+  <input type="checkbox" id="toggle2" class="toggle-checkbox" />
+  <label for="toggle2" class="toggle-label"></label>
+</div>
+
+
+  <div class="alarm-item with-line">
+    <a href="Titreşim.html" class="alarm-link">Titreşim</a>
+    <input type="checkbox" id="toggle3" class="toggle-checkbox" />
+    <label for="toggle3" class="toggle-label"></label>
+  </div>
+
+  <div class="alarm-item with-line">
+    <a href="Ertele.html" class="alarm-link">Ertele</a>
+    <input type="checkbox" id="toggle4" class="toggle-checkbox" />
+    <label for="toggle4" class="toggle-label"></label>
+  </div>
+</div>
+
+
+  <div class="btn-grup">
+    <button class="btn-iptal">İptal</button>
+    <button class="btn-kaydet">Kaydet</button>
+  </div>
+</div>
+
+<script src="/clockapp/arti/Artıalarm.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Alarmı Düzenleyin</title>
+  <link rel="stylesheet" href="Artıalarm.css">
+</head>
+<body>
+  <div class="alarm-container">
+    <div class="header">
+      <h2>Alarmı düzenleyin</h2>
+      <button class="delete-btn" title="Sil">🗑️</button>
+    </div>
+
+    <div class="time-picker">
+      <button onclick="decreaseHour()">▲</button>
+      <div class="time-display">
+        <span id="hour">06</span> : <span id="minute">00</span>
+      </div>
+      <button onclick="increaseHour()">▼</button>
+    </div>
+
+    <div class="label-section">
+      <input type="text" id="label" value="Günaydın">
+    </div>
+
+    <div class="repeat-section">
+      <label>
+        <input type="checkbox" id="repeat" checked>
+        Alarmı tekrar et
+      </label>
+      <div class="days">
+        <span>Pz</span><span>Sa</span><span>Ça</span><span>Pe</span><span>Cu</span><span>Ct</span><span>Pa</span>
+      </div>
+    </div>
+
+    <div class="select-section">
+      <label for="sound">🔔</label>
+      <select id="sound">
+        <option>Çan</option>
+        <option>Klasik</option>
+        <option>Melodi</option>
+      </select>
+    </div>
+
+    <div class="select-section">
+      <label for="snooze">😴</label>
+      <select id="snooze">
+        <option>5 dakika</option>
+        <option selected>10 dakika</option>
+        <option>15 dakika</option>
+      </select>
+    </div>
+
+    <div class="buttons">
+      <button class="save-btn">Kaydet</button>
+      <button class="cancel-btn">İptal</button>
+    </div>
+  </div>
+
+  <script src="Artıalarm.js"></script>
+</body>
+</html>

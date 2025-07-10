@@ -8,66 +8,123 @@
     body {
       font-family: sans-serif;
       padding: 20px;
-      background: #f5f5f5;
+      background: #ffffff;
     }
 
     h2 {
       margin-bottom: 20px;
       font-size: 22px;
       text-align: center;
-    }
-
-    .secenek-kutu {
-      background: #fff;
-      border: 2px solid #ccc;
-      border-radius: 12px;
-      padding: 12px 16px;
-      margin-bottom: 16px;
       display: flex;
-      flex-direction: column;
-      transition: border-color 0.3s, background-color 0.3s;
-      cursor: pointer;
     }
 
-    .secenek-kutu:hover {
-      background-color: #f0f0f0;
+    .ana-kutu {
+      background: #f6f6f6;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
 
-    .secenek-kutu input[type="radio"] {
-      display: none;
-    }
-
-    .secenek-kutu input[type="radio"]:checked + label {
-      border-color: #007bff;
-      background-color: #e6f0ff;
-    }
-
-    .secenek-label {
+    .switch-container {
       display: flex;
-      flex-direction: column;
-      gap: 4px;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .secenek-baslik {
-      font-size: 16px;
+    .switch-label {
+      font-size: 18px;
       font-weight: bold;
-      color: #000;
+      transition: color 0.3s;
+      color: #0d2844;
     }
 
-    .secenek-aciklama {
-      font-size: 13px;
-      color: #888;
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
     }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 26px;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    .switch input:checked + .slider {
+      background-color: #1c3f63;
+    }
+
+    .switch input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+.secenek-kutu {
+  background: #fff;
+  border: 2px solid #ded8d8;
+  border-radius: 10px;
+  padding: 16px;
+  transition: border-color 0.3s, background-color 0.3s, opacity 0.3s;
+}
+
+.secenek-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.secenek-label input[type="radio"] {
+  accent-color: #007bff;
+  width: 18px;
+  height: 18px;
+  display: none;
+}
+
+.secenek-baslik {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.secenek-aciklama {
+  font-size: 13px;
+  color: #888;
+}
+
 
     .secenek-link {
       text-decoration: none;
       color: inherit;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid #ccc;
-      margin: 20px 0;
+    .pasif {
+      opacity: 0.5;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -75,28 +132,66 @@
 
   <h2>Alarm Sesi</h2>
 
-  <!-- Spotify seçeneği -->
-  <div class="secenek-kutu">
-    <input type="radio" name="alarm-sesi" id="spotify" />
-    <label for="spotify" class="secenek-label">
-      <a href="https://open.spotify.com" target="_blank" class="secenek-link">
-         <i class="fab fa-spotify" style="color: #1DB954; margin-right: 6px;"></i>Spotify
-
-        <span class="secenek-aciklama">Favori şarkılarınızı ekleyin</span>
-      </a>
-    </label>
+  <!-- Açık/Kapalı Kutusu -->
+  <div class="ana-kutu">
+    <div class="switch-container">
+      <span class="switch-label" id="durum-yazi">Açık</span>
+      <label class="switch">
+        <input type="checkbox" id="switch-btn" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
   </div>
 
-  <hr>
+<!-- Tüm seçenekler tek kutuda -->
+<div class="secenek-kutu" id="tum-kutu">
+  <!-- Spotify -->
+  <label for="spotify" class="secenek-label">
+    <input type="radio" name="alarm-sesi" id="spotify" />
+    <div>
+      <span class="secenek-baslik">🎵 Spotify</span>
+      <span class="secenek-aciklama">Favori şarkılarınızı ekleyin</span>
+    </div>
+  </label>
 
-  <!-- Zil sesi seçeneği -->
-  <div class="secenek-kutu">
+  <hr style="border: none; border-top: 1px solid #ddd; margin: 12px 0;" />
+
+  <!-- Zil sesi -->
+  <label for="zil" class="secenek-label">
     <input type="radio" name="alarm-sesi" id="zil" />
-    <label for="zil" class="secenek-label">
+    <div>
       <span class="secenek-baslik">🔔 Zil Sesi</span>
       <span class="secenek-aciklama">Homecoming</span>
-    </label>
-  </div>
+    </div>
+  </label>
+</div>
+
+  <script>
+    const switchBtn = document.getElementById("switch-btn");
+    const spotifyKutu = document.getElementById("spotify-kutu");
+    const zilKutu = document.getElementById("zil-kutu");
+    const durumYazi = document.getElementById("durum-yazi");
+
+    function toggleKutular() {
+      const acik = switchBtn.checked;
+      if (acik) {
+        spotifyKutu.classList.remove("pasif");
+        zilKutu.classList.remove("pasif");
+        durumYazi.textContent = "Açık";
+        durumYazi.style.color = "#007bff";
+      } else {
+        spotifyKutu.classList.add("pasif");
+        zilKutu.classList.add("pasif");
+        durumYazi.textContent = "Kapalı";
+        durumYazi.style.color = "#888";
+      }
+    }
+
+    switchBtn.addEventListener("change", toggleKutular);
+
+    // Sayfa yüklendiğinde kontrol et
+    toggleKutular();
+  </script>
 
 </body>
 </html>

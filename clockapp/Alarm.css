@@ -1,13 +1,14 @@
-  body {
+body {
   background-color: rgb(245, 246, 246);
 }
 h3 {
   text-align: center;
   font-size: 40px;
+  margin-bottom: 40px;
 }
 .arti-btn {
   position: fixed;
-  bottom: 540px;
+  bottom: 650px;
   right: 50px;
   color: black;
   background: none;
@@ -19,7 +20,7 @@ h3 {
 }
 .uc-nokta {
   position: fixed;
-  bottom: 540px;
+  bottom: 650px;
   right: 0px;
   color: black;
   background: none;
@@ -117,4 +118,85 @@ body {
 
 .ucnokta-menu a:last-child {
   border-bottom: none;
+}
+body {
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+  font-family: sans-serif;
+}
+
+.alarm-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.alarm-left {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.alarm-center {
+  font-size: 14px;
+  text-align: center;
+}
+
+.alarm-right {
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 42px;
+  height: 22px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.kapali {
+  color: #999 !important;
 }

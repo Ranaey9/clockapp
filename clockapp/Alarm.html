@@ -1,37 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saat</title>
-  <link rel="stylesheet" href="Alarm.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saat</title>
+    <link rel="stylesheet" href="Alarm.css" />
+  </head>
+  <body>
+    <h3>Tüm alarmlar Kapalı</h3>
+    <div class="arti-container">
+      <button
+        class="arti-btn"
+        onclick="window.location.href='arti/Artıalarm.html'"
+      >
+        +
+      </button>
+    </div>
 
-  <h3>Tüm alarmlar Kapalı</h3>
-<div class="arti-container">
-<button class="arti-btn" onclick="window.location.href='arti/Artıalarm.html'">+</button>
+    <div class="altmenu">
+      <ul>
+        <li><a href="./Alarm.html">Alarm</a></li>
+        <li><a href="./DunyaSaati.html">Dünya Saati</a></li>
+        <li><a href="./Kronometre.html">Kronometre</a></li>
+        <li><a href="./Zamanlayici.html">Zamanlayıcı</a></li>
+      </ul>
+    </div>
+    <!-- Alarm.html içine direk şunu eklersin -->
+    <button class="uc-nokta" onclick="menüucnokta()">⋮</button>
+    <div id="ucnoktaMenu" class="ucnokta-menu" style="display: none">
+      <a href="menu1/uyku.html">Uyku Modu</a>
+      <a href="menu1/duzenle.html">Düzenle</a>
+      <a href="menu1/sirala.html">Sırala</a>
+    </div>
 
-</div>
+    <div id="alarm-listesi"></div>
+    <script>
+      // LocalStorage'tan alarmları al
+      let alarmlar = JSON.parse(localStorage.getItem("alarjiler") || "[]");
 
-  <div class="altmenu">
-    <ul>
-      <li><a href="./Alarm.html">Alarm</a></li>
-      <li><a href="./DunyaSaati.html">Dünya Saati</a></li>
-      <li><a href="./Kronometre.html">Kronometre</a></li>
-      <li><a href="./Zamanlayici.html">Zamanlayıcı</a></li>
-    </ul>
-  </div>
-<!-- Alarm.html içine direk şunu eklersin -->
-<button class="uc-nokta" onclick="menüucnokta()">⋮</button>
-<div id="ucnoktaMenu" class="ucnokta-menu" style="display: none;">
-  <a href="menu1/uyku.html">Uyku Modu</a>
-  <a href="menu1/duzenle.html">Düzenle</a>
-  <a href="menu1/sirala.html">Sırala</a>
-</div>
+      //  Açık olanları en üste getir
+      alarmlar.sort((a, b) => {
+        if (a.aktif === b.aktif) return 0;
+        return a.aktif ? -1 : 1; // açık olanlar yukarı
+      });
 
+      const container = document.getElementById("alarm-listesi");
+      if (alarmlar.length === 0) {
+        container.innerHTML = `<p style="text-align:center; color:#999;">Hiç alarm yok.</p>`;
+      }
 
-<script src="menu1/menu.js"></script>
-<script src="/clockapp/arti/Artıalarm.js"></script>
-</body>
+      //  Her alarm için kart oluştur
+      alarmlar.forEach((alarm, index) => {
+        const kart = document.createElement("div");
+        kart.className = "alarm-card";
+
+        kart.innerHTML = `
+      <div class="alarm-left ${alarm.aktif ? "" : "kapali"}">${alarm.saat}</div>
+      <div class="alarm-center ${alarm.aktif ? "" : "kapali"}">${
+          alarm.tarih
+        }</div>
+      <div class="alarm-right">
+        <label class="toggle-switch">
+          <input type="checkbox" ${
+            alarm.aktif ? "checked" : ""
+          } data-index="${index}">
+          <span class="slider"></span>
+        </label>
+      </div>
+    `;
+
+        //  Üzerine basınca sil
+        kart.addEventListener("click", () => {
+          if (confirm("Bu alarmı silmek istiyor musun?")) {
+            alarmlar.splice(index, 1);
+            localStorage.setItem("alarjiler", JSON.stringify(alarmlar));
+            location.reload();
+          }
+        });
+
+        //  Switch'e tıklanınca aktiflik değiştir
+        const toggle = kart.querySelector('input[type="checkbox"]');
+        toggle.addEventListener("click", (e) => {
+          e.stopPropagation(); // tıklama silmeye gitmesin
+          alarm.aktif = toggle.checked;
+          localStorage.setItem("alarjiler", JSON.stringify(alarmlar));
+          location.reload();
+        });
+
+        container.appendChild(kart);
+      });
+    </script>
+
+    <script src="menu1/menu.js"></script>
+    <script src="/clockapp/arti/Artıalarm.js"></script>
+  </body>
 </html>
+

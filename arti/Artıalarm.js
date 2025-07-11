@@ -43,12 +43,14 @@ document.getElementById("hour-column").addEventListener("wheel", function (e) {
 });
 
 // Dakika için aynı işlem
-document.getElementById("minute-column").addEventListener("wheel", function (e) {
-  e.preventDefault();
-  if (e.deltaY < 0) dakika = (dakika + 1) % 60;
-  else dakika = (dakika - 1 + 60) % 60;
-  saatiGoster();
-});
+document
+  .getElementById("minute-column")
+  .addEventListener("wheel", function (e) {
+    e.preventDefault();
+    if (e.deltaY < 0) dakika = (dakika + 1) % 60;
+    else dakika = (dakika - 1 + 60) % 60;
+    saatiGoster();
+  });
 
 // Gün seçme: tıklayınca seçili olmasını sağlar
 document.querySelectorAll(".day").forEach(function (gun) {
@@ -71,4 +73,85 @@ sesButonu.addEventListener("change", function () {
   } else {
     sesAyarKutusu.style.display = "none";
   }
+});
+
+// Sayfa yüklendiğinde çalışacak
+document.addEventListener("DOMContentLoaded", function () {
+  // Kaydet Butonuna tıklanınca:
+  document.querySelector(".save-btn").addEventListener("click", function () {
+    // Saat ve dakika değerlerini al (değişkenlerden)
+    const alarmSaati = `${sifirEkle(saat)}:${sifirEkle(dakika)}`;
+
+    // Alarm adı
+    const not = document.getElementById("label").value || "(Adsız)";
+
+    // Diğer ayarlar
+    const sesAcik = document.getElementById("sound-toggle").checked;
+    const titreşimAcik = document.getElementById("vibration").checked;
+    const erteleAcik = document.getElementById("snooze").checked;
+
+    // Seçilen günleri al
+    const gunler = [];
+    document.querySelectorAll(".day.selected").forEach(function (el) {
+      gunler.push(el.textContent);
+    });
+
+    // Alarm nesnesi oluştur
+    const alarm = {
+      saat: alarmSaati,
+      not: not,
+      ses: sesAcik,
+      titreşim: titreşimAcik,
+      ertele: erteleAcik,
+      gunler: gunler,
+    };
+
+    // Kaydet (localStorage)
+    let alarmlar = JSON.parse(localStorage.getItem("alarjiler") || "[]");
+    alarmlar.push(alarm);
+    localStorage.setItem("alarjiler", JSON.stringify(alarmlar));
+
+    // Ana sayfaya dön
+    window.location.href = "../Alarm.html";
+  });
+
+  // İptal butonu → geri dön
+  document.querySelector(".cancel-btn").addEventListener("click", function () {
+    window.location.href = "../Alarm.html";
+  });
+});
+document.querySelector(".save-btn").addEventListener("click", function () {
+  const alarmSaati = `${sifirEkle(saat)}:${sifirEkle(dakika)}`;
+  const alarmAdi = document.getElementById("label").value || "(Adsız)";
+  const tarih = new Date();
+  const gunler = ["Paz", "Pzt", "Sal", "Çar", "Per", "Cum", "Cmt"];
+  const gun = gunler[tarih.getDay()];
+  const aylar = [
+    "Oca",
+    "Şub",
+    "Mar",
+    "Nis",
+    "May",
+    "Haz",
+    "Tem",
+    "Ağu",
+    "Eyl",
+    "Eki",
+    "Kas",
+    "Ara",
+  ];
+  const tarihYazi = `${gun}, ${tarih.getDate()} ${aylar[tarih.getMonth()]}`;
+
+  const alarm = {
+    saat: alarmSaati,
+    tarih: tarihYazi,
+    aktif: true,
+  };
+
+  let alarmlar = JSON.parse(localStorage.getItem("alarjiler") || "[]");
+  alarmlar.push(alarm);
+  localStorage.setItem("alarjiler", JSON.stringify(alarmlar));
+
+  // Alarm listesi sayfasına git
+  window.location.href = "Alarmlar.html";
 });

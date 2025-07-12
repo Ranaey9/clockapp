@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tek Menülü Alarm Listesi</title>
+<link rel="stylesheet" href="sirala.css">
+</head>
+<body>
+  <button id="menuBtn" aria-label="Menüyü Aç">⋮</button>
+
+  <div id="mainMenu" role="menu" aria-label="Alarm Sıralama Menüsü">
+    <div class="menu-item" data-val="ozel">Özel Liste</div>
+    <div class="menu-item" data-val="kucuktenBuyuge">Saat Sırasına Göre</div>
+  </div>
+
+  <div id="alarm-listesi"></div>
+
+  <div id="altButonlar">
+    <button id="iptalBtn">İptal</button>
+    <button id="kaydetBtn">Kaydet</button>
+  </div>
+
+  <script src="sirala.js"></script>
+</body>

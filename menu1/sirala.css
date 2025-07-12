@@ -28,7 +28,7 @@ body {
   right: 20px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
   width: 200px;
   z-index: 1000;
 }
@@ -102,7 +102,6 @@ body {
   gap: 10px;
 }
 
-
 .alarm-card.kapali .alarm-left,
 .alarm-card.kapali .alarm-center {
   color: #bbb !important;
@@ -116,7 +115,6 @@ body {
   margin-right: 2px; /* sağdan biraz boşluk */
   margin-left: 6px; /* çöp kutusundan uzaklaştırır */
 }
-
 
 .toggle-switch input {
   opacity: 0;
@@ -146,9 +144,6 @@ body {
   background-color: white;
   border-radius: 50%;
   transition: transform 0.4s ease;
-
-
-
 }
 
 input:checked + .slider {
@@ -187,7 +182,8 @@ input:checked + .slider:before {
   gap: 20px;
   z-index: 1002;
 }
-#kaydetBtn, #iptalBtn {
+#kaydetBtn,
+#iptalBtn {
   flex: 1;
   max-width: 140px;
   background: transparent;

@@ -34,65 +34,8 @@
     </div>
 
     <div id="alarm-listesi"></div>
-    <script>
-      // LocalStorage'tan alarmları al
-      let alarmlar = JSON.parse(localStorage.getItem("alarjiler") || "[]");
-
-      //  Açık olanları en üste getir
-      alarmlar.sort((a, b) => {
-        if (a.aktif === b.aktif) return 0;
-        return a.aktif ? -1 : 1; // açık olanlar yukarı
-      });
-
-      const container = document.getElementById("alarm-listesi");
-      if (alarmlar.length === 0) {
-        container.innerHTML = `<p style="text-align:center; color:#999;">Hiç alarm yok.</p>`;
-      }
-
-      //  Her alarm için kart oluştur
-      alarmlar.forEach((alarm, index) => {
-        const kart = document.createElement("div");
-        kart.className = "alarm-card";
-
-        kart.innerHTML = `
-      <div class="alarm-left ${alarm.aktif ? "" : "kapali"}">${alarm.saat}</div>
-      <div class="alarm-center ${alarm.aktif ? "" : "kapali"}">${
-          alarm.tarih
-        }</div>
-      <div class="alarm-right">
-        <label class="toggle-switch">
-          <input type="checkbox" ${
-            alarm.aktif ? "checked" : ""
-          } data-index="${index}">
-          <span class="slider"></span>
-        </label>
-      </div>
-    `;
-
-        //  Üzerine basınca sil
-        kart.addEventListener("click", () => {
-          if (confirm("Bu alarmı silmek istiyor musun?")) {
-            alarmlar.splice(index, 1);
-            localStorage.setItem("alarjiler", JSON.stringify(alarmlar));
-            location.reload();
-          }
-        });
-
-        //  Switch'e tıklanınca aktiflik değiştir
-        const toggle = kart.querySelector('input[type="checkbox"]');
-        toggle.addEventListener("click", (e) => {
-          e.stopPropagation(); // tıklama silmeye gitmesin
-          alarm.aktif = toggle.checked;
-          localStorage.setItem("alarjiler", JSON.stringify(alarmlar));
-          location.reload();
-        });
-
-        container.appendChild(kart);
-      });
-    </script>
-
+<script src="Alarm.js"></script>
     <script src="menu1/menu.js"></script>
     <script src="/clockapp/arti/Artıalarm.js"></script>
   </body>
 </html>
-

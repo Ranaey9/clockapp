@@ -1,0 +1,121 @@
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #ffffff;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      text-align: center;
+      display: flex;
+    }
+
+    .ana-kutu {
+      background: #f6f6f6;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .switch-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .switch-label {
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s;
+      color: #0d2844;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      border-radius: 26px;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      border-radius: 50%;
+      transition: .4s;
+    }
+
+    .switch input:checked + .slider {
+      background-color: #1c3f63;
+    }
+
+    .switch input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+.secenek-kutu {
+  background: #fff;
+  border: 2px solid #ded8d8;
+  border-radius: 10px;
+  padding: 16px;
+  transition: border-color 0.3s, background-color 0.3s, opacity 0.3s;
+}
+
+.secenek-label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.secenek-label input[type="radio"] {
+  accent-color: #007bff;
+  width: 18px;
+  height: 18px;
+  display: none;
+}
+
+.secenek-baslik {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.secenek-aciklama {
+  font-size: 13px;
+  color: #888;
+}
+
+
+    .secenek-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .pasif {
+      opacity: 0.5;
+      pointer-events: none;
+    }

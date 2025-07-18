@@ -70,3 +70,4 @@ function turVeyaSifirla() {
 function menüucnokta() {
   alert("Menü açılabilir (simülasyon)");
 }
+ 

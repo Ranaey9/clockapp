@@ -20,28 +20,28 @@
       </div>
     </div>
 
-    <!-- Tüm seçenekler tek kutuda -->
-    <div class="secenek-kutu" id="tum-kutu">
-      <!-- Spotify -->
-      <label for="spotify" class="secenek-label">
-        <input type="radio" name="alarm-sesi" id="spotify" />
-        <div>
-          <span class="secenek-baslik">🎵 Spotify</span>
-          <span class="secenek-aciklama">Favori şarkılarınızı ekleyin</span>
-        </div>
-      </label>
-
-      <hr style="border: none; border-top: 1px solid #ddd; margin: 12px 0" />
-
-      <!-- Zil sesi -->
-      <label for="zil" class="secenek-label">
-        <input type="radio" name="alarm-sesi" id="zil" />
-        <div>
-          <span class="secenek-baslik">🔔 Zil Sesi</span>
-          <span class="secenek-aciklama">Homecoming</span>
-        </div>
-      </label>
+<!-- Tüm seçenekler tek kutuda -->
+<div class="secenek-kutu" id="tum-kutu">
+  <!-- Spotify (Yeni sekmede açılır hale getirildi) -->
+  <a href="https://open.spotify.com" target="_blank" class="secenek-label" style="text-decoration: none;">
+    <div>
+      <span class="secenek-baslik">🎵 Spotify</span>
+      <span class="secenek-aciklama">Favori şarkılarınızı ekleyin</span>
     </div>
+  </a>
+
+  <hr style="border: none; border-top: 1px solid #ddd; margin: 12px 0" />
+
+  <!-- Zil sesi -->
+  <label for="zil" class="secenek-label">
+    <input type="radio" name="alarm-sesi" id="zil" />
+    <div>
+      <span class="secenek-baslik">🔔 Zil Sesi</span>
+      <span class="secenek-aciklama">Homecoming</span>
+    </div>
+  </label>
+</div>
+
 
     <script>
       const switchBtn = document.getElementById("switch-btn");
